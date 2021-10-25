@@ -213,9 +213,9 @@ class MirrorListener(listeners.MirrorListeners):
             count = len(files)
             if self.message.chat.type == 'private':
                 msg = f'<code>{link}</code>\n'
-                msg += f'<b>Total Files: </b>{count}'
+                msg += f'<b>➜ Total Files : </b>{count}'
                 if typ != 0:
-                    msg += f'\n<b>Corrupted Files: </b>{typ}'
+                    msg += f'\n<b>➜ Corrupted Files : </b>{typ}'
                 sendMessage(msg, self.bot, self.update)
             else:
                 chat_id = str(self.message.chat.id)[4:]
@@ -249,19 +249,19 @@ class MirrorListener(listeners.MirrorListeners):
                 update_all_messages()
             return
         with download_dict_lock:
-            msg = f'<code>{download_dict[self.uid].name()}</code>\n\n<b>Size: </b>{size}'
+            msg = f'<code>{download_dict[self.uid].name()}</code>\n\n<b>➜ 𝗦𝗶𝘇𝗲 : </b>{size}'
             if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
-                msg += '\n\n<b>Type: </b>Folder'
-                msg += f'\n<b>SubFolders: </b>{folders}'
-                msg += f'\n<b>Files: </b>{files}'
+                msg += '\n\n<b>➜ 𝗧𝘆𝗽𝗲 : </b>Folder'
+                msg += f'\n<b>➜ 𝗦𝘂𝗯 𝗙𝗼𝗹𝗱𝗲𝗿𝘀 : </b>{folders}'
+                msg += f'\n<b>➜ 𝗙𝗶𝗹𝗲𝘀 :</b>{files}'
             else:
-                msg += f'\n\n<b>Type: </b>{typ}'
+                msg += f'\n\n<b>➜ 𝗧𝘆𝗽𝗲 :</b>{typ}'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = short_url(link)
-                buttons.buildbutton("☁️ Drive Link", surl)
+                buttons.buildbutton("☁️ 𝗗𝗿𝗶𝘃𝗲 𝗟𝗶𝗻𝗸", surl)
             else:
-                buttons.buildbutton("☁️ Drive Link", link)
+                buttons.buildbutton("☁️ 𝗗𝗿𝗶𝘃𝗲 𝗟𝗶𝗻𝗸", link)
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 url_path = requests.utils.quote(f'{download_dict[self.uid].name()}')
@@ -270,19 +270,19 @@ class MirrorListener(listeners.MirrorListeners):
                     share_url += '/'
                     if SHORTENER is not None and SHORTENER_API is not None:
                         siurl = short_url(share_url)
-                        buttons.buildbutton("⚡ Index Link", siurl)
+                        buttons.buildbutton("⚡ 𝗜𝗻𝗱𝗲𝘅 𝗟𝗶𝗻𝗸", siurl)
                     else:
-                        buttons.buildbutton("⚡ Index Link", share_url)
+                        buttons.buildbutton("⚡ 𝗜𝗻𝗱𝗲𝘅 𝗟𝗶𝗻𝗸", share_url)
                 else:
                     share_urls = f'{INDEX_URL}/{url_path}?a=view'
                     if SHORTENER is not None and SHORTENER_API is not None:
                         siurl = short_url(share_url)
-                        buttons.buildbutton("⚡ Index Link", siurl)
+                        buttons.buildbutton("⚡ 𝗜𝗻𝗱𝗲𝘅 𝗟𝗶𝗻𝗸", siurl)
                         if VIEW_LINK:
                             siurls = short_url(share_urls)
                             buttons.buildbutton("🌐 View Link", siurls)
                     else:
-                        buttons.buildbutton("⚡ Index Link", share_url)
+                        buttons.buildbutton("⚡ 𝗜𝗻𝗱𝗲𝘅 𝗟𝗶𝗻𝗸", share_url)
                         if VIEW_LINK:
                             buttons.buildbutton("🌐 View Link", share_urls)
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
@@ -296,7 +296,7 @@ class MirrorListener(listeners.MirrorListeners):
             else:
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
-                msg += f'\n\n<b>cc: </b>{uname}'
+                msg += f'\n\n<b>\n\n══════════════════════════════════════════\n\n<b>#𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗱 𝗧𝗼 𝗧𝗲𝗮𝗺 𝗗𝗿𝗶𝘃𝗲 𝗦𝘂𝗰𝗲𝘀𝘀𝗙𝘂𝗹𝗹𝘆✅\n\n🙋🏻‍♂️ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 :- {uname}\n\n🏷 𝗣𝗼𝘄𝗲𝗿𝗱𝗲𝗱 𝗕𝘆 :- @HiroshiBots || @Hiroshi_Leexh_2_O\n\n📛 𝗗𝗼 𝗡𝗼𝘁 𝗦𝗵𝗮𝗿𝗲 𝗜𝗻𝗱𝗲𝘅 𝗟𝗶𝗻𝗸 𝗣𝘂𝗯𝗹𝗶𝗰𝗹𝘆 📛</b>'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
