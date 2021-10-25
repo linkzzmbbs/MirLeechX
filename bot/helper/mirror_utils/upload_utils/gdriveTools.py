@@ -377,9 +377,9 @@ class GoogleDriveHelper:
                     LOGGER.info(f"{msg}")
                     return "your clone has been stopped and cloned data has been deleted!", "cancelled"
                 msg += f'<code>{meta.get("name")}</code>\n\n<b>➜ Size: </b>{get_readable_file_size(self.transferred_size)}'
-                msg += '\n\n<b>➜Type: </b>Folder'
-                msg += f'\n<b>➜SubFolders: </b>{self.total_folders}'
-                msg += f'\n<b>➜Files: </b>{self.total_files}'
+                msg += '\n\n<b>➜ 𝗧𝘆𝗽𝗲​ : </b>Folder'
+                msg += f'\n<b>➜ 𝗦𝘂𝗯𝗙𝗼𝗹𝗱𝗲𝗿𝘀​ : </b>{self.total_folders}'
+                msg += f'\n<b>➜ 𝗙𝗶𝗹𝗲𝘀​ : </b>{self.total_files}'
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
                     surl = short_url(durl)
@@ -409,8 +409,8 @@ class GoogleDriveHelper:
                 except:
                     typ = 'File'
                 try:
-                    msg += f'\n\n<b>➜Size: </b>{get_readable_file_size(int(meta.get("size")))}'
-                    msg += f'\n\n<b>➜Type: </b>{typ}'
+                    msg += f'\n\n<b>➜ 𝗧𝘆𝗽𝗲 ​: </b>{get_readable_file_size(int(meta.get("size")))}'
+                    msg += f'\n\n<b>➜ 𝗧𝘆𝗽𝗲​ : </b>{typ}'
                 except TypeError:
                     pass
                 if INDEX_URL is not None:
@@ -577,9 +577,9 @@ class GoogleDriveHelper:
                     content += f'<b> | <a href="https://telegra.ph/{self.path[nxt_page]}">Next</a></b>'
                     nxt_page += 1
             Telegraph(access_token=telegraph_token).edit_page(path = self.path[prev_page],
-                                 title = 'Mirror-leech-bot Search',
-                                 author_name='Mirror-leech-bot',
-                                 author_url='https://github.com/anasty17/mirror-leech-telegram-bot',
+                                  title = '𝗛𝗶𝗿𝗼𝘀𝗵𝗶 𝗠𝗶𝗿𝗿𝗼𝗿 𝗭𝗼𝗻𝗲 𝗦𝗲𝗮𝗿𝗰𝗵 𝗥𝗲𝘀𝘂𝗹𝘁𝘀​ 🔎',
+                                 author_name='HiroshiBots 📢',
+                                 author_url='https://telegram.dog/HiroshiBots',
                                  html_content=content)
         return
 
@@ -774,9 +774,9 @@ class GoogleDriveHelper:
 
         for content in self.telegraph_content :
             self.path.append(Telegraph(access_token=telegraph_token).create_page(
-                                                    title = 'Mirror-leech-bot Search',
-                                                    author_name='Mirror-leech-bot',
-                                                    author_url='https://github.com/anasty17/mirror-leech-telegram-bot',
+                                                    title = '𝗛𝗶𝗿𝗼𝘀𝗵𝗶 𝗠𝗶𝗿𝗿𝗼𝗿 𝗭𝗼𝗻𝗲 𝗦𝗲𝗮𝗿𝗰𝗵 𝗥𝗲𝘀𝘂𝗹𝘁𝘀​ 🔎',
+                                                    author_name='HiroshiBots 📢',
+                                                    author_url='https://telegram.dog/HiroshiBots',
                                                     html_content=content
                                                     )['path'])
 
@@ -784,9 +784,9 @@ class GoogleDriveHelper:
         if self.num_of_path > 1:
             self.edit_telegraph()
 
-        msg = f"<b>Found {all_contents_count} results for <i>{fileName}</i></b>"
+        msg = f"<b>Found {all_contents_count} Results For <b>{fileName}</b>"
         buttons = button_build.ButtonMaker()
-        buttons.buildbutton("🔎 VIEW", f"https://telegra.ph/{self.path[0]}")
+        buttons.buildbutton("🔎 𝗦𝗲𝗮𝗿𝗰𝗵 𝗥𝗲𝘀𝘂𝗹𝘁𝘀​", f"https://telegra.ph/{self.path[0]}")
 
         return msg, InlineKeyboardMarkup(buttons.build_menu(1))
 
@@ -806,10 +806,10 @@ class GoogleDriveHelper:
             if drive_file['mimeType'] == self.__G_DRIVE_DIR_MIME_TYPE:
                 self.gDrive_directory(**drive_file)
                 msg += f'<code>{name}</code>'
-                msg += f'\n\n<b>Size: </b>{get_readable_file_size(self.total_bytes)}'
-                msg += '\n\n<b>Type: </b>Folder'
-                msg += f'\n<b>SubFolders: </b>{self.total_folders}'
-                msg += f'\n<b>Files: </b>{self.total_files}'
+                msg += f'\n\n<b>➜ 𝗦𝗶𝘇𝗲​ : </b>{get_readable_file_size(self.total_bytes)}'
+                msg += '\n\n<b>➜ 𝗧𝘆𝗽𝗲​ : </b>Folder'
+                msg += f'\n<b>➜ 𝗦𝘂𝗯𝗙𝗼𝗹𝗱𝗲𝗿𝘀​ : </b>{self.total_folders}'
+                msg += f'\n<b>➜ 𝗙𝗶𝗹𝗲𝘀​ : </b>{self.total_files}'
             else:
                 msg += f'<code>{name}</code>'
                 try:
@@ -819,9 +819,9 @@ class GoogleDriveHelper:
                 try:
                     self.total_files += 1
                     self.gDrive_file(**drive_file)
-                    msg += f'\n\n<b>Size: </b>{get_readable_file_size(self.total_bytes)}'
-                    msg += f'\n\n<b>Type: </b>{typee}'
-                    msg += f'\n<b>Files: </b>{self.total_files}'
+                    msg += f'\n\n<b>➜ 𝗦𝗶𝘇𝗲​ : </b>{get_readable_file_size(self.total_bytes)}'
+                    msg += f'\n\n<b>➜ 𝗧𝘆𝗽𝗲​ : </b>{typee}'
+                    msg += f'\n<b>➜ 𝗙𝗶𝗹𝗲𝘀​ : </b>{self.total_files}'
                 except TypeError:
                     pass
         except Exception as err:
