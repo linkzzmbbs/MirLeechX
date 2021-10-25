@@ -21,15 +21,15 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
-    STATUS_CLONING = "Cloning...♻️"
-    STATUS_WAITING = "Queued...📝"
-    STATUS_FAILED = "Failed 🚫. Cleaning Download..."
-    STATUS_PAUSE = "Paused...⭕️"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
-    STATUS_SPLITTING = "Splitting...✂️"
+    STATUS_UPLOADING = "𝗨𝗽𝗹𝗼𝗮𝗱𝗶𝗻𝗴...📤"
+    STATUS_DOWNLOADING = "𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗶𝗻𝗴...📥"
+    STATUS_CLONING = "𝗖𝗹𝗼𝗻𝗶𝗻𝗴...♻️"
+    STATUS_WAITING = "𝗤𝘂𝗲𝘂𝗲𝗱...📝"
+    STATUS_FAILED = "𝗙𝗮𝗶𝗹𝗲𝗱 🚫. 𝗖𝗹𝗲𝗮𝗻𝗶𝗻𝗴 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱..."
+    STATUS_PAUSE = "𝗣𝗮𝘂𝘀𝗲𝗱...⭕️"
+    STATUS_ARCHIVING = "𝗔𝗿𝗰𝗵𝗶𝘃𝗶𝗻𝗴...🔐"
+    STATUS_EXTRACTING = "𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗶𝗻𝗴...📂"
+    STATUS_SPLITTING = "𝗦𝗽𝗹𝗶𝘁𝘁𝗶𝗻𝗴...✂️"
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
@@ -121,8 +121,8 @@ def get_readable_message():
                 globals()['PAGE_NO'] -= 1
             start = COUNT
         for index, download in enumerate(list(download_dict.values())[start:], start=1):
-            msg += f"<code>{download.name()}</code>"
-            msg += f"\n<b>Status:</b> <i>{download.status()}</i>"
+            msg += f"<b>▬▬▬▬▬  @HiroshiBots ▬▬▬▬▬\n\n➜ 𝗙𝗶𝗹𝗲𝗻𝗮𝗺𝗲 :</b><code>{download.name()}</code>"
+            msg += f"\n<b>➜ 𝗦𝘁𝗮𝘁𝘂𝘀 :</b> <B>{download.status()}</B>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
                 MirrorStatus.STATUS_EXTRACTING,
@@ -130,31 +130,32 @@ def get_readable_message():
             ]:
                 msg += f"\n{get_progress_bar_string(download)} {download.progress()}"
                 if download.status() == MirrorStatus.STATUS_CLONING:
-                    msg += f"\n<b>Cloned:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b>➜ 𝗖𝗹𝗼𝗻𝗲𝗱 :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
-                    msg += f"\n<b>Uploaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b>➜ 𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗱 :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 else:
-                    msg += f"\n<b>Downloaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
-                msg += f"\n<b>Speed:</b> {download.speed()} | <b>ETA:</b> {download.eta()}"
+                    msg += f"\n<b>➜ 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗲𝗱 :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                msg += f"\n<b>➜ 𝗦𝗽𝗲𝗲𝗱 :</b> {download.speed()} | <b>ETA:</b> {download.eta()}"
                 try:
-                    msg += f"\n<b>Seeders:</b> {download.aria_download().num_seeders}" \
-                           f" | <b>Peers:</b> {download.aria_download().connections}"
+                    msg += f"\n<b>➜ 𝗦𝗲𝗲𝗱𝗲𝗿𝘀 :</b> {download.aria_download().num_seeders}" \
+                           f" | <b>➜ 𝗣𝗲𝗲𝗿𝘀 :</b> {download.aria_download().connections}"
                 except:
                     pass
+                    msg += f'\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a></b>'
                 try:
-                    msg += f"\n<b>Seeders:</b> {download.torrent_info().num_seeds}" \
-                           f" | <b>Leechers:</b> {download.torrent_info().num_leechs}"
+                    msg += f"\n<b>➜ 𝗦𝗲𝗲𝗱𝗲𝗿𝘀 :</b> {download.torrent_info().num_seeds}" \
+                           f" | <b>➜ 𝗟𝗲𝗲𝗰𝗵𝗲𝗿𝘀 :</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
-                msg += f"\n<code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b>➜ 𝗧𝗼 𝗖𝗮𝗻𝗰𝗲𝗹 :</b><code>/{BotCommands.CancelMirror} {download.gid()}</code>\n\n══════════════════════════════════════════"
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
         if STATUS_LIMIT is not None and dick_no > STATUS_LIMIT:
-            msg += f"<b>Page:</b> {PAGE_NO}/{pages} | <b>Tasks:</b> {dick_no}\n"
+            msg += f"<b>𝗣𝗮𝗴𝗲 :</b> {PAGE_NO}/{pages} | <b>𝗧𝗮𝘀𝗸𝘀 :</b> {dick_no}\n"
             buttons = button_build.ButtonMaker()
-            buttons.sbutton("Previous", "pre")
-            buttons.sbutton("Next", "nex")
+            buttons.sbutton("Previous", "<—- 𝗣𝗿𝗲𝘃𝗶𝗼𝘂𝘀")
+            buttons.sbutton("Next", "𝗡𝗲𝘅𝘁 —->")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg, button
         return msg, ""
