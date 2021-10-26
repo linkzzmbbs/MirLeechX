@@ -138,7 +138,13 @@ def get_readable_message():
                 msg += f"\n<b>➜ 𝗦𝗽𝗲𝗲𝗱 :</b> {download.speed()} | <b>ETA:</b> {download.eta()}"
                 if reply_to:
                     msg += f"\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a></b>"
+                else:
+                    msg += f"\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a></b>"
                 # if hasattr(download, 'is_torrent'):
+                try:
+                    msg += f"\n<b>Warn:</b><code>/warn {download.message.from_user.id}</code>"
+                except:
+                    pass
                 try:
                     msg += f"\n<b>➜ 𝗦𝗲𝗲𝗱𝗲𝗿𝘀 :</b> {download.aria_download().num_seeders}" \
                            f" | <b>➜ 𝗣𝗲𝗲𝗿𝘀 :</b> {download.aria_download().connections}"
