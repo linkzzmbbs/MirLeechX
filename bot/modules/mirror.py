@@ -213,17 +213,17 @@ class MirrorListener(listeners.MirrorListeners):
             count = len(files)
             if self.message.chat.type == 'private':
                 msg = f'<code>{link}</code>\n'
-                msg += f'<b>➜ Total Files : </b>{count}'
+                msg += f'➜ Total Files : {count}'
                 if typ != 0:
-                    msg += f'\n<b>➜ Corrupted Files : </b>{typ}'
+                    msg += f'\n➜ Corrupted Files : {typ}'
                 sendMessage(msg, self.bot, self.update)
             else:
                 chat_id = str(self.message.chat.id)[4:]
                 msg = f"<a href='https://t.me/c/{chat_id}/{self.uid}'>{link}</a>\n"
-                msg += f'<b>Total Files: </b>{count}\n'
+                msg += f'Total Files: {count}\n'
                 if typ != 0:
-                    msg += f'<b>Corrupted Files: </b>{typ}\n'
-                msg += f'<b>cc: </b>{uname}\n\n'
+                    msg += f'Corrupted Files: {typ}\n'
+                msg += f'<b>cc: {uname}\n\n'
                 fmsg = ''
                 for index, item in enumerate(list(files), start=1):
                     msg_id = files[item]
@@ -249,13 +249,13 @@ class MirrorListener(listeners.MirrorListeners):
                 update_all_messages()
             return
         with download_dict_lock:
-            msg = f'<code>{download_dict[self.uid].name()}</code>\n\n<b>➜ 𝗦𝗶𝘇𝗲 : </b>{size}'
+            msg = f'<code>{download_dict[self.uid].name()}</code>\n\n➜ 𝗦𝗶𝘇𝗲 : {size}'
             if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
-                msg += '\n\n<b>➜ 𝗧𝘆𝗽𝗲 : </b>Folder'
-                msg += f'\n<b>➜ 𝗦𝘂𝗯 𝗙𝗼𝗹𝗱𝗲𝗿𝘀 : </b>{folders}'
-                msg += f'\n<b>➜ 𝗙𝗶𝗹𝗲𝘀 :</b>{files}'
+                msg += '\n\n➜ 𝗧𝘆𝗽𝗲 : Folder'
+                msg += f'\n➜ 𝗦𝘂𝗯 𝗙𝗼𝗹𝗱𝗲𝗿𝘀 : {folders}'
+                msg += f'\n➜ 𝗙𝗶𝗹𝗲𝘀 :{files}'
             else:
-                msg += f'\n\n<b>➜ 𝗧𝘆𝗽𝗲 :</b>{typ}'
+                msg += f'\n\n➜ 𝗧𝘆𝗽𝗲 :{typ}'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = short_url(link)
