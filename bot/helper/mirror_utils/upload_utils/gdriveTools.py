@@ -577,7 +577,7 @@ class GoogleDriveHelper:
                     content += f'<b> | <a href="https://telegra.ph/{self.path[nxt_page]}">Next</a></b>'
                     nxt_page += 1
             Telegraph(access_token=telegraph_token).edit_page(path = self.path[prev_page],
-                                  title = '𝗛𝗶𝗿𝗼𝘀𝗵𝗶 𝗠𝗶𝗿𝗿𝗼𝗿 𝗭𝗼𝗻𝗲 𝗦𝗲𝗮𝗿𝗰𝗵 𝗥𝗲𝘀𝘂𝗹𝘁𝘀​ 🔎',
+                                 title = '𝗛𝗶𝗿𝗼𝘀𝗵𝗶 𝗠𝗶𝗿𝗿𝗼𝗿 𝗭𝗼𝗻𝗲 𝗦𝗲𝗮𝗿𝗰𝗵 𝗥𝗲𝘀𝘂𝗹𝘁𝘀​ 🔎',
                                  author_name='HiroshiBots 📢',
                                  author_url='https://telegram.dog/HiroshiBots',
                                  html_content=content)
