@@ -162,8 +162,8 @@ def get_readable_message():
         if STATUS_LIMIT is not None and dick_no > STATUS_LIMIT:
             msg += f"<b>𝗣𝗮𝗴𝗲 :</b> {PAGE_NO}/{pages} | <b>𝗧𝗮𝘀𝗸𝘀 :</b> {dick_no}\n"
             buttons = button_build.ButtonMaker()
-            buttons.sbutton("Previous", "<—- 𝗣𝗿𝗲𝘃𝗶𝗼𝘂𝘀")
-            buttons.sbutton("Next", "𝗡𝗲𝘅𝘁 —->")
+            buttons.sbutton("Previous", "pre")
+            buttons.sbutton("Next", "nex")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg, button
         return msg, ""
