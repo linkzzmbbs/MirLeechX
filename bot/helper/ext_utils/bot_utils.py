@@ -141,12 +141,12 @@ def get_readable_message():
                            f" | <b>➜ 𝗣𝗲𝗲𝗿𝘀 :</b> {download.aria_download().connections}"
                 except:
                     pass
-                    msg += f'\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a></b>'
                 try:
                     msg += f"\n<b>➜ 𝗦𝗲𝗲𝗱𝗲𝗿𝘀 :</b> {download.torrent_info().num_seeds}" \
                            f" | <b>➜ 𝗟𝗲𝗲𝗰𝗵𝗲𝗿𝘀 :</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
+                msg += f'\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a></b>'
                 msg += f"\n<b>➜ 𝗧𝗼 𝗖𝗮𝗻𝗰𝗲𝗹 :</b><code>/{BotCommands.CancelMirror} {download.gid()}</code>\n\n══════════════════════════════════════════"
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
