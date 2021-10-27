@@ -143,7 +143,7 @@ def get_readable_message():
                     msg += f"\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href='tg://user?id={download.message.from_user.id}'>{download.message.from_user.first_name}</a></b>"
                 # if hasattr(download, 'is_torrent'):
                 try:
-                    msg += f"\n<b>Warn:</b><code>/warn {download.message.from_user.id}</code>"
+                    msg += f"\n<b>➜ 𝗨𝗦𝗘𝗥 𝗜𝗗 :</b><code>/warn {download.message.from_user.id}</code>"
                 except:
                     pass
                 try:
@@ -163,8 +163,8 @@ def get_readable_message():
         if STATUS_LIMIT is not None and dick_no > STATUS_LIMIT:
             msg += f"<b>𝗣𝗮𝗴𝗲 :</b> {PAGE_NO}/{pages} | <b>𝗧𝗮𝘀𝗸𝘀 :</b> {dick_no}\n"
             buttons = button_build.ButtonMaker()
-            buttons.sbutton("Previous", "pre")
-            buttons.sbutton("Next", "nex")
+            buttons.sbutton("<--- 𝗣𝗿𝗲𝘃𝗶𝗼𝘂𝘀", "pre")
+            buttons.sbutton("𝗡𝗲𝘅𝘁 --->", "nex")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg, button
         return msg, ""
