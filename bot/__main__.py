@@ -34,7 +34,7 @@ def stats(update, context):
     stats = f'<b>𝗨𝗣𝗧𝗜𝗠𝗘 :</b> <code>{currentTime}</code>\n' \
             f'<b>𝗧𝗼𝘁𝗮𝗹 𝗗𝗶𝘀𝗸 𝗦𝗽𝗮𝗰𝗲 :</b> <code>{total}</code>\n' \
             f'<b>𝗨𝘀𝗲𝗱 :</b> <code>{used}</code>' \
-            f'<b>𝗙𝗿𝗲𝗲:</b> <code>{free}</code>\n\n' \
+            f'<b>𝗙𝗿𝗲𝗲 :</b> <code>{free}</code>\n\n' \
             f'<b>𝗨𝗟 :</b> <code>{sent}</code>\n' \
             f'<b>𝗗𝗟 :</b> <code>{recv}</code>\n\n' \
             f'<b>𝗖𝗣𝗨 :</b> <code>{cpuUsage}%</code>' \
