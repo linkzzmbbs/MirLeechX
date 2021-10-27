@@ -45,8 +45,8 @@ def stats(update, context):
 
 def start(update, context):
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("𝗚𝗥𝗢𝗨𝗣", "https://telegram.dog/Hiroshi_CloudZone")
-    buttons.buildbutton("𝗢𝗪𝗡𝗘𝗥", "https://telegram.dog/I_m_Kristy")
+    buttons.buildbutton("𝐌𝐒𝐏 𝐁𝐨𝐭𝐬", "https://telegram.dog/MSPbots")
+    buttons.buildbutton("𝐒𝐮𝐩𝐩𝐨𝐫𝐭", "https://telegram.dog/MSPdiscussion")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
@@ -156,7 +156,7 @@ help_string = f'''
 
 def bot_help(update, context):
     button = button_build.ButtonMaker()
-    button.buildbutton("𝗣𝗜𝗡𝗚 𝗛𝗘𝗥𝗘", f"https://telegram.dog/I_m_KristyBot")
+    button.buildbutton("𝗣𝗜𝗡𝗚 𝗛𝗘𝗥𝗘", f"https://telegram.dog/BaashaBaii")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update, reply_markup)
 
