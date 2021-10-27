@@ -122,7 +122,7 @@ def get_readable_message():
             start = COUNT
         for index, download in enumerate(list(download_dict.values())[start:], start=1):
             msg += f"<b>▬▬▬▬▬  @HiroshiBots ▬▬▬▬▬\n\n➜ 𝗙𝗶𝗹𝗲𝗻𝗮𝗺𝗲 :</b><code>{download.name()}</code>"
-            msg += f"\n<b>➜ 𝗦𝘁𝗮𝘁𝘂𝘀 :</b> <B>{download.status()}</B>"
+            msg += f"\n<b>➜ 𝗦𝘁𝗮𝘁𝘂𝘀 :{download.status()}</b>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
                 MirrorStatus.STATUS_EXTRACTING,
@@ -137,9 +137,9 @@ def get_readable_message():
                     msg += f"\n<b>➜ 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗲𝗱 :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 msg += f"\n<b>➜ 𝗦𝗽𝗲𝗲𝗱 :</b> {download.speed()} | <b>ETA:</b> {download.eta()}"
                 if reply_to:
-                    msg += f"\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a></b>"
+                    msg += f"\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href='tg://user?id={download.message.from_user.id}'>{download.message.from_user.first_name}</a></b>"
                 else:
-                    msg += f"\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a></b>"
+                    msg += f"\n<b>➜ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 : <a href='tg://user?id={download.message.from_user.id}'>{download.message.from_user.first_name}</a></b>"
                 # if hasattr(download, 'is_torrent'):
                 try:
                     msg += f"\n<b>Warn:</b><code>/warn {download.message.from_user.id}</code>"
