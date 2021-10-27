@@ -122,7 +122,7 @@ def get_readable_message():
             start = COUNT
         for index, download in enumerate(list(download_dict.values())[start:], start=1):
             reply_to = download.message.reply_to_message
-            msg += f"<b>▬▬▬▬▬  @HiroshiBots ▬▬▬▬▬\n\n➜ 𝗙𝗶𝗹𝗲𝗻𝗮𝗺𝗲 :</b><code>{download.name()}</code>"
+            msg += f"<b>▬▬▬▬▬  @MSPbots ▬▬▬▬▬\n\n➜ 𝗙𝗶𝗹𝗲𝗻𝗮𝗺𝗲 :</b><code>{download.name()}</code>"
             msg += f"\n<b>➜ 𝗦𝘁𝗮𝘁𝘂𝘀 :{download.status()}</b>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
@@ -163,8 +163,8 @@ def get_readable_message():
         if STATUS_LIMIT is not None and dick_no > STATUS_LIMIT:
             msg += f"<b>𝗣𝗮𝗴𝗲 :</b> {PAGE_NO}/{pages} | <b>𝗧𝗮𝘀𝗸𝘀 :</b> {dick_no}\n"
             buttons = button_build.ButtonMaker()
-            buttons.sbutton("<--- 𝗣𝗿𝗲𝘃𝗶𝗼𝘂𝘀", "pre")
-            buttons.sbutton("𝗡𝗲𝘅𝘁 --->", "nex")
+            buttons.sbutton("<--- 𝗣𝗿𝗲𝘃𝗶𝗼𝘂𝘀", "prev")
+            buttons.sbutton("𝗡𝗲𝘅𝘁 --->", "next")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg, button
         return msg, ""
@@ -173,14 +173,14 @@ def turn(update, context):
     query = update.callback_query
     query.answer()
     global COUNT, PAGE_NO
-    if query.data == "nex":
+    if query.data == "next":
         if PAGE_NO == pages:
             COUNT = 0
             PAGE_NO = 1
         else:
             COUNT += STATUS_LIMIT
             PAGE_NO += 1
-    elif query.data == "pre":
+    elif query.data == "prev":
         if PAGE_NO == 1:
             COUNT = STATUS_LIMIT * (pages - 1)
             PAGE_NO = pages
