@@ -156,7 +156,7 @@ def get_readable_message():
                            f" | <b>➜ 𝗟𝗲𝗲𝗰𝗵𝗲𝗿𝘀 :</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
-                msg += f"\n<b>➜ 𝗧𝗼 𝗖𝗮𝗻𝗰𝗲𝗹 :</b><code>/{BotCommands.CancelMirror} {download.gid()}</code>\n\n══════════════════════════════════════════"
+                msg += f"\n<b>➜ 𝗧𝗼 𝗖𝗮𝗻𝗰𝗲𝗹 :</b><code>/{BotCommands.CancelMirror} {download.gid()}</code>\n\n════════════════════════════════════"
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
