@@ -296,7 +296,7 @@ class MirrorListener(listeners.MirrorListeners):
             else:
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
-                msg += f'\n\n🙋🏻‍♂️ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 :- {uname}'
+                msg += f'\n\n🙋🏻‍♂️ 𝗥𝗲𝗾𝘂𝗲𝘀𝘁𝗲𝗱 𝗕𝘆 :- {uname}\n\n<b>Music🎧 24/7</b>- <b><a href="https://t.me/MSPdiscussion?voicechat">Click Here</a></b>\n\n'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
